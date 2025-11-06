@@ -1,0 +1,4 @@
+package artifact
+
+class Relic {
+}

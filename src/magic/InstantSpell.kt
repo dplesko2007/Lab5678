@@ -1,0 +1,4 @@
+package magic
+
+class InstantSpell {
+}

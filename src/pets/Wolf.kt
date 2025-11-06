@@ -1,0 +1,4 @@
+package pets
+
+class Wolf {
+}
