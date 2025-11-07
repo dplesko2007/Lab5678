@@ -1,4 +1,8 @@
 package magic
 
-class InstantSpell {
+class InstantSpell(
+    name: String,
+    symbol: String,
+    val power: Int
+) : MagicEffect(name, symbol, 0) {
 }

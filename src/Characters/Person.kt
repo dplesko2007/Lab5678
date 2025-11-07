@@ -1,8 +1,7 @@
+package Characters
+
 import world.Quest
 import world.QuestType
-import Characters.Trader
-
-private val Enemy.np: String
 
 fun main() {
     val naruto: Hero = Hero()
@@ -32,10 +31,10 @@ fun main() {
     println("Name: ${gojo.name} | Gender: ${gojo.gender} | Class: ${gojo.role} | HP: ${gojo.hp}, MP: ${gojo.mp}")
     gojo.SayHello()
 
-    val orochimaru = Enemy()
+    val orochimaru = Enemy("Orochimaru",200)
     orochimaru.name = "Orochimaru"
     naruto.showStatus()
-    println("${naruto.name} saw enemy ${orochimaru.name}! His health is ${orochimaru.np}")
+    println("${naruto.name} saw enemy ${orochimaru.name}! His health is ${orochimaru.hp}")
     naruto.attack(orochimaru, 25)
 
     naruto.duel(gojo)
@@ -47,18 +46,33 @@ fun main() {
 
     trader.showAviableQuests()
 
+    val selectedQuest = trader.giveQuest(1)
+    selectedQuest.describe()
+
     val easyQuest = Quest("Сбор трав",2,100,"Легкий", QuestType.EXPLORE)
     val hardQuest = Quest("Охота на дракона",10,1000,"Сложный", QuestType.BOSSFIGHT)
 
     naruto.canAcceptQuest(easyQuest)
     gojo.canAcceptQuest(hardQuest)
 
-    val enemy1 = Enemy(name = "Goblin", hp =30,"alive","none")
+    val enemy1 = Enemy(name = "Goblin", hp = 30)
     println(enemy1.getThreatLevel())
-    val enemy2 = Enemy("Ork",100,"alive","none")
+    val enemy2 = Enemy("Ork", 100)
     println(enemy2.getThreatLevel())
-    val enemy3 = Enemy("dragon",200,"alive","fire")
+    val enemy3 = Enemy("dragon", 200)
     println(enemy3.getThreatLevel())
-//    val hero1 = Hero(name = "Arthur", hp = 100)
+//    val hero1 = Characters.Hero(name = "Arthur", hp = 100)
 //    println("Is hero alive? ${hero1.isAlive()}")
+    val blacksmith = NPC("Кузнец Ульфрик", hasQuest = true)
+    println(blacksmith.giveQuest())
+    blacksmith.trade()
+    val dragon = Boss(
+        "Алдуин", 500, "Огонь", phaseCount = 4, isFinalBoss = true)
+    dragon.startPhase(2)
+    println(dragon.dropLoot())
+    dragon.takeDamage(150)
+//    val enemy: GameCharacter = Enemy("Jean")
+//    val hero: GameCharacter = Hero(name = "Naruto")
+//    val npc: GameCharacter = NPC("Merchant")
+
 }

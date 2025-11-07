@@ -1,4 +1,8 @@
 package magic
 
-class MagicEffect {
+open class MagicEffect(
+    name: String,
+    val symbol: String,
+    val duration: Int
+) {
 }
